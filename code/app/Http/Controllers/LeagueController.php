@@ -27,6 +27,13 @@ class LeagueController extends Controller
         return view('leagues.chose', $data);
     }
 
+    public function getDetail($league_short)
+    {
+        $data['last_match'] = $this->api_client->getLastMatch($league_short);
+
+        return view('leagues.detail', $data);
+    }
+
     public function getAllMatchs($league_short, $year)
     {
         $data['matches'] = $this->api_client->getMatchesByLeagueSeason($league_short, $year);

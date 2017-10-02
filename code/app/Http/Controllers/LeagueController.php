@@ -3,9 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \juniorrosul\OpenLigaDbApi\Client as ApiClient;
+use Carbon\Carbon;
 
 class LeagueController extends Controller
 {
+
+    /**
+     * @var juniorrosul\OpenLigaDbApi\Client
+     */
+    protected $api_client;
+
+    public function __construct(ApiClient $client)
+    {
+        $this->api_client = $client;
+
+    }
+
     /**
      * Redirect to league matches
      * @return App::Redirect
@@ -22,6 +36,10 @@ class LeagueController extends Controller
      */
     public function getMatches($league_short)
     {
-        return view('view.name', $data);
+        $data = [
+            'matches' => $this->api_client->getMatchesByLeagueSeason($league_short, 2015),
+        ];
+
+        return view('league.macthes', $data);
     }
 }

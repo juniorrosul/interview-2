@@ -18,4 +18,6 @@ Route::get('/', function () {
 Route::group(['prefix' => 'league'], function() {
 
     Route::get('/', 'LeagueController@getIndex');
+
+    Route::get('{league_short}', 'LeagueController@getMatches');
 });

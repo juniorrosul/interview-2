@@ -11,12 +11,15 @@
 |
 */
 
+$router->pattern('year', '[0-9]{4}');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teste', function() {
-    $client = new Andinger\OpenLigaDbApi\Client();
+Route::group(['prefix' => 'league'], function() {
 
-    var_dump($client->getAvailableLeagues());
+    Route::get('/', 'LeagueController@getIndex');
+
+    Route::get('{league_short}/{year?}', 'LeagueController@getMatches');
 });

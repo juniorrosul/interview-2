@@ -21,5 +21,5 @@ Route::group(['prefix' => 'league'], function() {
 
     Route::get('/', 'LeagueController@getIndex');
 
-    Route::get('{league_short}/{year}', 'LeagueController@getMatches');
+    Route::get('{league_short}/{year?}', 'LeagueController@getMatches');
 });

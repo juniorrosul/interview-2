@@ -34,12 +34,16 @@ class LeagueController extends Controller
      * @param  String $league_short - Short name of the league, used in API
      * @return App::View
      */
-    public function getMatches($league_short, $year = 2017)
+    public function getMatches($league_short, $year = null)
     {
-        $data = [
-            'matches' => $this->api_client->getMatchesByLeagueSeason($league_short, $year),
-        ];
+        if (isset($year)) {
+            $data = [
+                'matches' => $this->api_client->getMatchesByLeagueSeason($league_short, $year),
+            ];
 
-        return view('league.macthes', $data);
+            return view('league.macthes', $data);
+        } else {
+            return view('league.upcoming_macthes', $data);
+        }
     }
 }

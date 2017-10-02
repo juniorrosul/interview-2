@@ -11,6 +11,8 @@
 |
 */
 
+$router->pattern('year', '[0-9]{4}');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,5 +21,5 @@ Route::group(['prefix' => 'league'], function() {
 
     Route::get('/', 'LeagueController@getIndex');
 
-    Route::get('{league_short}', 'LeagueController@getMatches');
+    Route::get('{league_short}/{year}', 'LeagueController@getMatches');
 });

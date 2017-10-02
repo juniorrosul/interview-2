@@ -28,9 +28,11 @@ Route::group(['prefix' => 'league'], function() {
     Route::get('chose', 'LeagueController@getChose')->name('league.chose');
 
     Route::group(['prefix' => '{league_short}'], function($league_short) {
-        Route::get('detail', 'LeagueController@getDetail')->name('league.detail');
+        Route::group(['prefix' => '{year}'], function() {
+            Route::get('detail', 'LeagueController@getDetail')->name('league.detail');
+            Route::get('all-matches', 'LeagueController@getAllMatchs')->name('league.all_matches');
+        });
         Route::get('upcoming-matches', 'LeagueController@getUpcomingMatches')->name('league.upcoming_matches');
-        Route::get('{year}/all-matches', 'LeagueController@getAllMatchs')->name('league.all_matches');
     });
 
 });

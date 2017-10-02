@@ -10,7 +10,7 @@
         @foreach ($leagues as $league)
         <tr @if ($league->getSeason() < \Carbon\Carbon::now()->format('Y')) class="danger" @endif>
             <td>
-                <a href="{{ route('league.detail', ['league_short'=>$league->getShortcut()]) }}">{{ $league->getName() }}</a>
+                <a href="{{ route('league.detail', ['league_short'=>$league->getShortcut(), 'year'=>$league->getSeason()]) }}">{{ $league->getName() }}</a>
             </td>
             <td>{{ $league->getSeason() }}</td>
             <td>

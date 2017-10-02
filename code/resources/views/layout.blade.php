@@ -18,6 +18,7 @@
     <![endif]-->
   </head>
   <body>
+    <h1>Hello, world!</h1>
 
     <div class="container">
         <h1>@yield('title', 'Interview 2')</h1>

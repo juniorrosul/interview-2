@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/teste', function() {
+    $client = new Andinger\OpenLigaDbApi\Client();
+
+    var_dump($client->getAvailableLeagues());
+});

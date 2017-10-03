@@ -1,0 +1,6 @@
+[submodule "homestead"]
+	path = homestead
+	url = https://github.com/laravel/homestead.git
+[submodule "code/packages/juniorrosul/openligadbapi"]
+	path = code/packages/juniorrosul/openligadbapi
+	url = https://github.com/juniorrosul/OpenLigaDbApi.git
